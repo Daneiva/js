@@ -49,32 +49,13 @@ var getMin= function(numbers,pos,min){
     return getMin(numbers,pos-1,min);
 };
 
-var getSum= function(numbers,pos,sum){
-        if(pos==undefined)
-            pos=numbers.length-1;
-        if(sum==undefined)
-            sum=numbers[pos];
-        if(pos==0){
-            return sum;
-        }
-        if(sum>numbers[pos-1]){
-            sum=sum+numbers[pos-1];
-        }
-        if(sum<numbers[pos-1]){
-            sum=sum+numbers[pos-1];
-            sum=numbers[pos-1];
-        }
-        return getSum(numbers,pos-1,sum);
-};
-
-var getAvg= function(numbers,pos,sum){
+var getSum=function(numbers,pos,sum){
     if(pos==undefined)
         pos=numbers.length-1;
     if(sum==undefined)
         sum=numbers[pos];
     if(pos==0){
-        cant=numbers.length-1;
-        return sum/cant;
+        return sum;
     }
     if(sum>numbers[pos-1]){
         sum=sum+numbers[pos-1];
@@ -84,6 +65,26 @@ var getAvg= function(numbers,pos,sum){
         sum=numbers[pos-1];
     }
     return getSum(numbers,pos-1,sum);
+};
+
+var getAvg= function(numbers,pos,avg){
+    if(pos==undefined)
+        pos=numbers.length-1;
+        cant=numbers.length;
+    if(avg==undefined)
+        avg=numbers[pos];
+    if(pos==0){
+        res= avg/cant;
+        return res;
+    }
+    if(avg>numbers[pos-1]){
+        avg=avg+numbers[pos-1];
+    }
+    if(avg<numbers[pos-1]){
+        avg=avg+numbers[pos-1];
+        avg=numbers[pos-1];
+    }
+    return getSum(numbers,pos-1,avg);
 };
 /*var countWords =  function(para){
     var date = new date();
