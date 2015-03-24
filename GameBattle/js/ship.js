@@ -1,6 +1,6 @@
-/**
- * Created by Alejandra Arteaga on 3/23/2015.
- */
+/*
+* Class Ship
+* */
 var Ship = function(posX, posY, sizX, sizY){
         this.positionX= posX;
         this.positionY=posY;
@@ -8,6 +8,7 @@ var Ship = function(posX, posY, sizX, sizY){
         this.sizeY=sizY;
         var _damage = 0;
         var _status= "Live";
+    /* Get and Set of the Class*/
     this.getDamage=function(){
         return _damage;
     };
