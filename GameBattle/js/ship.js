@@ -25,6 +25,7 @@ var Ship = function(posX, posY, sizX, sizY){
 * every team knows the code
 * apply google  javascript coding conventions
 * code review  after each commit
+* 5 points
 * */
 
    /* this.getPositionX=function(){
