@@ -1,14 +1,17 @@
 /**
  * Created by daneiva gamboa on 3/23/2015.
  */
-/*game field*/
+/*field board*/
 var Field= function(size) {
     this.size = size;
+
+    /*Create the field (size*size)*/
     this.matriz = new Array(this.size);
     for (var i = 0; i < this.size; i++) {
         this.matriz[i]= new Array(this.size);
     }
-    /*Initialize the matriz*/
+
+/*Initialize field board*/
     this.initialize = function () {
         for (var i = 0; i < this.size; i++) {
             for (var j = 0; j < this.size; j++) {
@@ -16,7 +19,8 @@ var Field= function(size) {
             }
         }
     };
-    /*Show the table*/
+
+  /*Show the board*/
     this.showTable = function(){
         for (var i = 0; i < this.size; i++) {
             console.log(this.matriz[i]);
@@ -27,14 +31,16 @@ var Field= function(size) {
 
 
 var putElements=function() {
-    var sizeTablet = 8;
+    var sizeTablet = 8;//
+    var numberOfShip=3;//
+
     var max = 3;
-    var numberOfShip=3;
     var shipCreated=0;
+
     var table = new Field(sizeTablet);
     table.initialize();
 
-    while(shipCreated<numberOfShip){
+  while(shipCreated<numberOfShip){
         var sizeX=Math.floor((Math.random() * max) + 1);
         var sizeY = sizeX==1 ?  Math.floor((Math.random() * max) + 1): 1;
         var positionX=Math.floor((Math.random() * (sizeTablet-sizeX)) + 1);
@@ -58,8 +64,6 @@ var putElements=function() {
         console.log(sizeX+'  '+sizeY+'  '+positionX+'  '+positionY+'  '+busy);
     }
     table.showTable();
-
-
 }
 
 var verifyPosition = function (sizeX,sizeY,positionX,positionY,table) {
