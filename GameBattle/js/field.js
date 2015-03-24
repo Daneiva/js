@@ -25,50 +25,53 @@ var Field= function(size) {
     };
 };
 
-var Element= function() {
-    this.positionX=0;
-    this.positionY=0;
-    this.sizeX=0;
-    this.sizeY=0;
 
-    this.status="Live";
+var putElements=function() {
+    var sizeTablet = 8;
+    var max = 3;
+    var numberOfShip=3;
+    var shipCreated=0;
+    var table = new Field(sizeTablet);
+    table.initialize();
+
+    while(shipCreated<numberOfShip){
+        var sizeX=Math.floor((Math.random() * max) + 1);
+        var sizeY = sizeX==1 ?  Math.floor((Math.random() * max) + 1): 1;
+        var positionX=Math.floor((Math.random() * (sizeTablet-sizeX)) + 1);
+        var positionY=Math.floor((Math.random() * (sizeTablet-sizeY)) + 1);
+
+        var busy = verifyPosition(sizeX,sizeY,positionX,positionY,table);
+        if(!busy) {
+            for (var i = 0; i < sizeX; i++) {
+                for (var j = 0; j < sizeY; j++) {
+                    if (table.matriz[positionY + j][positionX + i] == 0) {
+                        table.matriz[positionY + j][positionX + i] = 1;
+                    }
+                }
+            }
+            shipCreated++;
+        }
+        else{
+            continue;
+        }
+
+        console.log(sizeX+'  '+sizeY+'  '+positionX+'  '+positionY+'  '+busy);
+    }
+    table.showTable();
+
 
 }
 
-var putElements=function() {
-    var table = new Field(5);
-    table.initialize();
-
-
-    var sizeX=1;
-    var sizeY=3;
-    var positionX=1;
-    var positionY=0;
-
+var verifyPosition = function (sizeX,sizeY,positionX,positionY,table) {
+    var res = false;
     for (var i = 0; i < sizeX; i++) {
         for (var j = 0; j < sizeY; j++) {
-            if (table.matriz[positionY+j][positionX+i]==0) {
-                table.matriz[positionY+j][positionX+i]=1;
+            if (table.matriz[positionY+j][positionX+i]==1) {
+                res=true;
+                break;
             }
         }
     }
-
-    var sizeX=1;
-    var sizeY=4;
-    var positionX=1;
-    var positionY=1;
-    if (((positionX+sizeX)<=table.matriz.length) && ((positionY+sizeY)<=table.matriz.length)) {
-        for (var i = 0; i < sizeX; i++) {
-            for (var j = 0; j < sizeY; j++) {
-                if (table.matriz[positionY+j][positionX+i]==0) {
-                    table.matriz[positionY+j][positionX+i]=1;
-                }
-                else{
-                    table.matriz[positionY+j][positionX+i]=2;
-                }
-            }
-        }
-    };
-    table.showTable();
+    return res;
 }
 putElements();
