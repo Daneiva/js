@@ -20,13 +20,6 @@ var Ship = function(posX, posY, sizX, sizY){
     this.getStatus= function() {
         return _status;
     };
-/*
-* Rules:
-* every team knows the code
-* apply google  javascript coding conventions
-* code review  after each commit
-* 5 points
-* */
 
    /* this.getPositionX=function(){
         return this.positionX;
@@ -42,5 +35,5 @@ var Ship = function(posX, posY, sizX, sizY){
     };*/
 
 };
-Ship();
+//Ship();
 
