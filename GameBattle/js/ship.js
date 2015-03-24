@@ -21,7 +21,7 @@ var Ship = function(posX, posY, sizX, sizY){
         return _status;
     };
 
-   /* llthis.getPositionX=function(){
+  /* this.getPositionX=function(){
         return this.positionX;
     };
     this.getPositionY=function(){
@@ -35,5 +35,5 @@ var Ship = function(posX, posY, sizX, sizY){
     };*/
 
 };
-//var s= Ship(2,2,2,2);
+var s= new Ship(2,2,2,2);
 
