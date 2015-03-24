@@ -35,5 +35,5 @@ var Ship = function(posX, posY, sizX, sizY){
     };*/
 
 };
-//Ship();
+var s= Ship(2,2,2,2);
 
