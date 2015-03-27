@@ -7,7 +7,7 @@
 var Field= function(siz,numShips) {
     var _size = siz;
     var _numberOfShips=numShips;
-
+    var _ships = new Array(numShips);
     /*Create the field (size*size) and fill the board with 0*/
     var _matriz = new Array(_size);
 
@@ -37,11 +37,13 @@ var Field= function(siz,numShips) {
         while(_shipCreated < _numberOfShips){
             var _sizeX = Math.floor((Math.random() * _max) + 1);
             var _sizeY = _sizeX==1 ?  Math.floor((Math.random() * _max) + 1): 1;
-            var _positionX=Math.floor((Math.random() * (_size-_sizeX)) + 1);//review
-            var _positionY=Math.floor((Math.random() * (_size-_sizeY)) + 1);//review
-
+            var _posX = Math.floor((Math.random() * (_size)));
+            var _posY = Math.floor((Math.random() * (_size)));
+            var _positionX = _size > (_sizeX + _posX) ? _posX: (_posX - ((_sizeX+_posX)-_size));
+            var _positionY = _size > (_sizeY + _posY) ? _posY: (_posY - ((_sizeY+_posY)-_size));
             var _busy = verifyPosition(_sizeX,_sizeY,_positionX,_positionY);
             if(!_busy) {
+                _ships.push(new Ship(_sizeX,_sizeY,_positionX,_positionY));
                 for (var i = 0; i < _sizeX; i++) {
                     for (var j = 0; j < _sizeY; j++) {
                         if (_matriz[_positionY + j][_positionX + i] == 0) {
@@ -54,7 +56,7 @@ var Field= function(siz,numShips) {
             else{
                 continue;
             }
-            console.log(_sizeX+'  '+_sizeY+'  '+_positionX+'  '+_positionY+'  '+_busy);
+            console.log(_sizeX+'  '+_sizeY+'  '+_positionX+'  '+_positionY+'  '+_posX+' '+_posY);
         }
     };
 
