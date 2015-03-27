@@ -6,15 +6,11 @@ var Ship = function(posX, posY, sizX, sizY){
         this.positionY=posY;
         this.sizeX=sizX;
         this.sizeY=sizY;
-        var _damage = 0;
+
         var _status= "Live";
     /* Get and Set of the Class*/
-    this.getDamage=function(){
-        return _damage;
-    };
-    this.setDamage=function(newDamage){
-        _damage= newDamage;
-    };
+
+
     this.setStatusDie= function(){
         _status="Die";
     };
