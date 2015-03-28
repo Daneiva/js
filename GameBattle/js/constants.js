@@ -1,6 +1,4 @@
-/**
- * Created by Rodrigo Zarate on 3/27/2015.
- */
+
 /* Class Constants, Execute First to inicialize Constants*/
 var CONSTANTS = (function(){
     var _constants = {
