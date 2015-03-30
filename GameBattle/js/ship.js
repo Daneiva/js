@@ -1,21 +1,26 @@
 /*
 * Class Ship
 * */
-var Ship = function(posX, posY, sizX, sizY){
+var Ship = function(sizX, sizY, posX, posY ){
         this.positionX= posX;
         this.positionY=posY;
         this.sizeX=sizX;
         this.sizeY=sizY;
-
+        this.damage=0;
         var _status= "Live";
-    /* Get and Set of the Class*/
-
-    this.setStatusDie= function(){
-        _status="Die";
-    };
-    this.getStatus= function() {
-        return _status;
+    this.getStatus=function(matriz){
+        for (var i = 0; i < this.sizeX; i++) {
+            for (var j = 0; j < this.sizeY; j++) {
+                if (matriz[this.positionY + j][this.positionX + i] == 'H') {
+                    this.damage++;
+                }
+            }
+        }
+        if(this.sizeX >= this.damage ||this.sizeY >= this.damage) {
+            return _status= "Live";
+        }
+        return _status= "Die";
     };
 };
-var s= new Ship(2,2,2,2);
+
 
