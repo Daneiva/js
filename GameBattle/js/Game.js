@@ -92,6 +92,7 @@ var Game = function () {
                 var _shotRes = _field.markShot(posX,posY,_player.getId());
             }else{
                 console.log("The positions do not exist on the field");
+
             }
 
         }else{
