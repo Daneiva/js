@@ -19,7 +19,7 @@ var Ship = function(sizX, sizY, posX, posY ){
                     }
                 }
                 }
-                if(this.sizeX*this.sizeY > this.damage) {
+                if(this.sizeX*this.sizeY >= this.damage) {
                     return _status= "Live";
                 }
                 return _status= "Die";
