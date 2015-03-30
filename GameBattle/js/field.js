@@ -59,7 +59,6 @@ var Field= function(siz,numShips) {
             else{
                 continue;
             }
-            console.log(_sizeX+'  '+_sizeY+'  '+_positionX+'  '+_positionY+'  '+_posX+' '+_posY);
         }
     };
 

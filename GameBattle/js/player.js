@@ -8,7 +8,7 @@
 var Player=function(nam){
     //Name of Player
     this.name=nam;
-    var game = new Field(8,3);
+    var game = new Field(10,5);
     game.putShips();
     game.showTable();
     //Function setShoot to shoot to the ships
@@ -16,7 +16,7 @@ var Player=function(nam){
     // coorY = Coordenada Y del shoot
 
     this.setShoot = function (coorX, coorY) {
-        switch (game.getField()[coorY][coorX ]) {
+        switch (game.getField()[coorY][coorX]) {
             case "0":
                 console.log("Fail");
                 game.getField()[coorY][coorX] ='F';
@@ -45,7 +45,5 @@ var Player=function(nam){
     };
 
 };
-
-
 
 

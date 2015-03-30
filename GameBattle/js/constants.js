@@ -1,17 +1,17 @@
 
 /* Class Constants, Execute First to inicialize Constants*/
-var CONSTANTS = (function(){
+var CONSTANTS = function(size,ships,sizeShip){
     var _constants = {
         //Board Size
-        BOARD_SIZE: 8,
+        BOARD_SIZE: size,
         //Ships to Create
-        TOTAL_SHIPS: 4,
+        TOTAL_SHIPS: ships,
         // Max Size of Ship
-        MAX_SIZE_SHIP: 3
+        MAX_SIZE_SHIP: sizeShip
     };
     return {
         get: function(key) {
             return _constants[key];
         }
     };
-})();
+};
