@@ -47,6 +47,6 @@ var Player=function(nam){
 
 };
 
-var
+
 
 
