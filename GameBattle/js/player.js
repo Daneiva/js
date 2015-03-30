@@ -1,4 +1,8 @@
+/*
+ * Created by Daneiva Gamboa - Alejandra Arteaga
+ */
 /**
+ *
  * Class Player
  */
 var Player=function(nam){
@@ -14,12 +18,12 @@ var Player=function(nam){
     this.setShot = function (coorX, coorY) {
         /*var board= game.getField();*/
         switch (game.getField()[coorX][coorY ]) {
-            case 0:
+            case "0":
                 console.log("Fail");
                 game.getField()[coorX][coorY] ='F';
                 game.showTable();
                 break;
-            case 1:
+            case "1":
                 console.log("Hit");
                 game.getField()[coorX][coorY] ='H';
                 game.showTable();
@@ -42,5 +46,7 @@ var Player=function(nam){
     };
 
 };
+
+var
 
 

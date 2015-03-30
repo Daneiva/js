@@ -1,4 +1,7 @@
 /*
+ * Created by Rodrigo Zarate - Alejandra Arteaga
+ */
+/*
 * Class Ship
 * */
 var Ship = function(sizX, sizY, posX, posY ){
