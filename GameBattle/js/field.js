@@ -35,7 +35,7 @@ var Field= function(siz,numShips) {
         var _max = 3;
         var _shipCreated=0;
         while(_shipCreated < _numberOfShips){
-            var _sizeX = Math.floor((Math.random() * _max) + 1);
+            var _sizeX = Math.floor((Math.random() * _max-min+1) + min);
             var _sizeY = _sizeX==1 ?  Math.floor((Math.random() * _max) + 1): 1;
             var _posX = Math.floor((Math.random() * (_size)));
             var _posY = Math.floor((Math.random() * (_size)));
