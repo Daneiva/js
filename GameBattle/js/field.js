@@ -46,7 +46,7 @@ var Field= function(siz,numShips) {
             var _positionY = _size > (_sizeY + _posY) ? _posY: (_posY - ((_sizeY+_posY)-_size));
             var _busy = verifyPosition(_sizeX,_sizeY,_positionX,_positionY);
             if(!_busy) {
-                _ships.push(new Ship(_sizeX,_sizeY,_positionX,_positionY,_matriz));
+                _ships.push(new Ship(_sizeX,_sizeY,_positionX,_positionY));
                 for (var i = 0; i < _sizeX; i++) {
                     for (var j = 0; j < _sizeY; j++) {
                         if (_matriz[_positionY + j][_positionX + i] == "0") {

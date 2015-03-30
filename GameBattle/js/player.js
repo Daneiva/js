@@ -11,21 +11,20 @@ var Player=function(nam){
     var game = new Field(8,3);
     game.putShips();
     game.showTable();
-    //Function setShot to shot to the ships
-    // coorX = Coordenada X del shot
-    // coorY = Coordenada Y del shot
+    //Function setShoot to shoot to the ships
+    // coorX = Coordenada X del shoot
+    // coorY = Coordenada Y del shoot
 
-    this.setShot = function (coorX, coorY) {
-        /*var board= game.getField();*/
-        switch (game.getField()[coorX][coorY ]) {
+    this.setShoot = function (coorX, coorY) {
+        switch (game.getField()[coorY][coorX ]) {
             case "0":
                 console.log("Fail");
-                game.getField()[coorX][coorY] ='F';
+                game.getField()[coorY][coorX] ='F';
                 game.showTable();
                 break;
             case "1":
                 console.log("Hit");
-                game.getField()[coorX][coorY] ='H';
+                game.getField()[coorY][coorX] ='H';
                 game.showTable();
                 for(var i=0; i< game.getShips().length ; i++){
                     console.log("Ship "+i+ ": "+ game.getShips()[i].getStatus(game.getField()));
