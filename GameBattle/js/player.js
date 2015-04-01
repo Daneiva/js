@@ -10,6 +10,7 @@ var Player=function(nam){
      * @type {string}
      */
     this.name=nam;
+
     var game = new Field();
     game.putShips();
     game.showTable();
@@ -43,7 +44,6 @@ var Player=function(nam){
                 break;
             default :
                 break
-
         }
     };
 
