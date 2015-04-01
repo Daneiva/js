@@ -10,7 +10,7 @@ var Ship = function(sizX, sizY, posX, posY ){
         this.sizeX=sizX;
         this.sizeY=sizY;
         this.damage=0;
-        var _status= "Live";
+        var _status= CONSTANTS.get("SHIP_LIVE");
         this.getStatus=function(matriz){
             for (var i = 0; i < this.sizeX; i++) {
                 for (var j = 0; j < this.sizeY; j++) {
@@ -20,9 +20,9 @@ var Ship = function(sizX, sizY, posX, posY ){
                 }
                 }
                 if(this.sizeX*this.sizeY >= this.damage) {
-                    return _status= "Live";
+                    return _status= CONSTANTS.get("SHIP_LIVE");
                 }
-                return _status= "Die";
+                return _status= CONSTANTS.get("SHIP_DIE");
         };
 };
 

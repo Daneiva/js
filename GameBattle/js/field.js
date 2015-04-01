@@ -4,25 +4,25 @@
 /*
  * field board
  */
-var Field= function(siz,numShips) {
-    var _size = siz;
-    var _numberOfShips=numShips;
+var Field= function() {
+    //var _size = CONSTANTS.get("BOARD_SIZE");
+    //var _numberOfShips=CONSTANTS.get("TOTAL_SHIPS");
     var _ships = new Array();/*var _ships = new Array();*/
     /*Create the field (size*size) and fill the board with 0*/
-    var _matriz = new Array(_size);
+    var _matriz = new Array(CONSTANTS.get("BOARD_SIZE"));
 
-    for (var i = 0; i < _size; i++) {
-        _matriz[i]= new Array(_size);
+    for (var i = 0; i < CONSTANTS.get("BOARD_SIZE"); i++) {
+        _matriz[i]= new Array(CONSTANTS.get("BOARD_SIZE"));
     }
-    for (var i = 0; i < _size; i++) {
-        for (var j = 0; j < _size; j++) {
-            _matriz[i][j]="0";
+    for (var i = 0; i < CONSTANTS.get("BOARD_SIZE"); i++) {
+        for (var j = 0; j < CONSTANTS.get("BOARD_SIZE"); j++) {
+            _matriz[i][j]=CONSTANTS.get("BLANK_SPACE");
         }
     }
 
     /*Show the board*/
     this.showTable = function(){
-        for (var i = 0; i < _size; i++) {
+        for (var i = 0; i < CONSTANTS.get("BOARD_SIZE"); i++) {
             console.log(_matriz[i]);
             console.log('\n');
         }
@@ -35,22 +35,22 @@ var Field= function(siz,numShips) {
      * Put the Ships on the board
      * */
     this.putShips=function() {
-        var _max = 3;
+        //var _max = CONSTANTS.get("MAX_SIZE_SHIP");
         var _shipCreated=0;
-        while(_shipCreated < _numberOfShips){
-            var _sizeX = Math.floor((Math.random() * _max) + 1);
-            var _sizeY = _sizeX==1 ?  Math.floor((Math.random() * _max) + 1): 1;
-            var _posX = Math.floor((Math.random() * (_size)));
-            var _posY = Math.floor((Math.random() * (_size)));
-            var _positionX = _size > (_sizeX + _posX) ? _posX: (_posX - ((_sizeX+_posX)-_size));
-            var _positionY = _size > (_sizeY + _posY) ? _posY: (_posY - ((_sizeY+_posY)-_size));
+        while(_shipCreated < CONSTANTS.get("TOTAL_SHIPS")){
+            var _sizeX = Math.floor((Math.random() * CONSTANTS.get("MAX_SIZE_SHIP")) + 1);
+            var _sizeY = _sizeX==1 ?  Math.floor((Math.random() * CONSTANTS.get("MAX_SIZE_SHIP")) + 1): 1;
+            var _posX = Math.floor((Math.random() * (CONSTANTS.get("BOARD_SIZE"))));
+            var _posY = Math.floor((Math.random() * (CONSTANTS.get("BOARD_SIZE"))));
+            var _positionX = CONSTANTS.get("BOARD_SIZE") > (_sizeX + _posX) ? _posX: (_posX - ((_sizeX+_posX)-(CONSTANTS.get("BOARD_SIZE"))));
+            var _positionY = CONSTANTS.get("BOARD_SIZE") > (_sizeY + _posY) ? _posY: (_posY - ((_sizeY+_posY)-(CONSTANTS.get("BOARD_SIZE"))));
             var _busy = verifyPosition(_sizeX,_sizeY,_positionX,_positionY);
             if(!_busy) {
                 _ships.push(new Ship(_sizeX,_sizeY,_positionX,_positionY));
                 for (var i = 0; i < _sizeX; i++) {
                     for (var j = 0; j < _sizeY; j++) {
-                        if (_matriz[_positionY + j][_positionX + i] == "0") {
-                            _matriz[_positionY + j][_positionX + i] = "1";
+                        if (_matriz[_positionY + j][_positionX + i] == CONSTANTS.get("BLANK_SPACE")) {
+                            _matriz[_positionY + j][_positionX + i] = CONSTANTS.get("BUSY_SPACE");
                         }
                     }
                 }
@@ -76,7 +76,7 @@ var Field= function(siz,numShips) {
         var _res = false;
         for (var i = 0; i < sizeX; i++) {
             for (var j = 0; j < sizeY; j++) {
-                if (_matriz[positionY+j][positionX+i]=="1") {
+                if (_matriz[positionY+j][positionX+i]==CONSTANTS.get("BUSY_SPACE")) {
                     _res=true;
                     break;
                 }

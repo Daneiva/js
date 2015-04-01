@@ -22,14 +22,14 @@ var Game = function () {
 
         console.log("Enter the next data:");
         console.log("Board size:");
-        var _size = 10;//MINIMO 3 , MAXIMO 20?
+       // var _size = 10; //MINIMO 3 , MAXIMO 20?
         console.log("Number of ships:");
-        var _ships = 5;//MINIMO 1 , MAXIMO _size?
+        var _ships = CONSTANTS.get("TOTAL_SHIPS"); //MINIMO 1 , MAXIMO _size?
 
         console.log("Game level:");
         var _level = "Normal";//VALIDATE
 
-        var _numTurns = _size*_size;//CALCULATE ACORDING GAME LEVEL
+        var _numTurns = (CONSTANTS.get("BOARD_SIZE"))*(CONSTANTS.get("BOARD_SIZE"));//CALCULATE ACORDING GAME LEVEL
 
         console.log("Enter the number of players (4 maximum):");
         var _maxPlayers = 1 ;//VALIDATE
@@ -57,13 +57,12 @@ var Game = function () {
                 _createdPlayers--;
                 console.log("=> Error: The player name: "+_playerName+" or player ID: "+_playerId+" already exists");
             }
-
         }
 
     /* Integration is missing with the Constant Class*/
     //    var _const = new CONSTANTS(_size, _ships, 3);
 
-        _field = new Field(_size,_ships);
+        _field = new Field(CONSTANTS.get("BOARD_SIZE"),_ships);
         _field.putShips();
         _field.showTable();
 
