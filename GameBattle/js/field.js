@@ -1,15 +1,27 @@
 /**
  * Created by daneiva gamboa -Jimmy Maldonado
  */
-/*
- * field board
+/**
+ * Class Field that create the game field, show board, put the ships and draw the ships.
  */
 var Field= function() {
+
+    /**
+     * Array of Ships
+     * @type {Array<Ship>}
+     */
     var _ships = new Array();
 
-    /*Create the field (size*size) and fill the board with 0*/
+
+    /**
+     * Matrix that represent the game field.
+     * @type {Array<Array<char>>}
+     */
     var _matriz = new Array(CONSTANTS.get("BOARD_SIZE"));
 
+    /**
+     * Create the field (size*size) and fill the board with 0
+     */
     for (var i = 0; i < CONSTANTS.get("BOARD_SIZE"); i++) {
         _matriz[i]= new Array(CONSTANTS.get("BOARD_SIZE"));
     }
@@ -19,21 +31,30 @@ var Field= function() {
         }
     }
 
-    /*Show the board*/
+    /**
+     * Show the board.
+     */
     this.showTable = function(){
         for (var i = 0; i < CONSTANTS.get("BOARD_SIZE"); i++) {
             console.log(_matriz[i]);
             console.log('\n');
         }
     };
+    /**
+     * Get the Field.
+     * @return {Array<Array<char>>}
+     */
     this.getField=function(){
-
         return _matriz;
     };
-    /*
-     * Put the Ships on the board
-     * */
+    /**
+     * Put the ships in the Field.
+     */
     this.putShips=function() {
+        /**
+         * Ship creates in the game
+         * @type {int}
+         */
         var _shipCreated=0;
         while(_shipCreated < CONSTANTS.get("TOTAL_SHIPS")){
             var _sizeAndPosition = generateSizeAndPosition();
@@ -49,7 +70,15 @@ var Field= function() {
         }
     };
 
+    /**
+     * Function that generate a random size and position of the ships in the field.
+     * @return {Array<int>}
+     */
     var generateSizeAndPosition = function(){
+       /**
+        * Array of random numbers that represent size and position in X and Y of a Ship.
+        * @type {Array<int>}
+        */
         var res = new Array();
         var _sizeX = Math.floor((Math.random() * CONSTANTS.get("MAX_SIZE_SHIP")) + 1);
         var _sizeY = _sizeX==1 ?  Math.floor((Math.random() * CONSTANTS.get("MAX_SIZE_SHIP")) + 1): 1;
@@ -60,6 +89,14 @@ var Field= function() {
         res.push(_sizeX,_sizeY,_positionX,_positionY);
         return res;
     };
+    /**
+     * Draw one ship in the field.
+     * @param {int} sizeX
+     * @param {int} sizeY
+     * @param {int} positionX
+     * @param {int} positionY
+     * @return {Array<int>}
+     */
     var drawShip = function (sizeX,sizeY,positionX,positionY) {
         for (var i = 0; i < sizeX; i++) {
             for (var j = 0; j < sizeY; j++) {
@@ -69,16 +106,21 @@ var Field= function() {
             }
         }
     };
-
+    /**
+     * Get the Ships
+     * @return {Array<Ship>}
+     */
     this.getShips=function(){
         return _ships;
-
     };
 
-    /*ships=game.getShips()*/
-
-    /*
-     Verify if is possible to create a ship
+    /**
+     * Method to verify if is possible to create a ship
+     * @param {int} sizeX
+     * @param {int} sizeY
+     * @param {int} positionX
+     * @param {int} positionY
+     * @return {boolean}
      */
     var verifyPosition = function (sizeX,sizeY,positionX,positionY) {
         var _res = false;

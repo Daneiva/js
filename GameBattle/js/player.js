@@ -2,20 +2,24 @@
  * Created by Daneiva Gamboa - Alejandra Arteaga
  */
 /**
- *
- * Class Player
+ * Class Player initialize a player and the game.
  */
 var Player=function(nam){
-    //Name of Player
+    /**
+     * Name of Player
+     * @type {string}
+     */
     this.name=nam;
 
     var game = new Field();
     game.putShips();
     game.showTable();
-    //Function setShoot to shoot to the ships
-    // coorX = Coordenada X del shoot
-    // coorY = Coordenada Y del shoot
 
+    /**
+     * SetShoot method to shoot to the ships
+     * @param {int} coorX
+     * @param {int} coorY
+     */
     this.setShoot = function (coorX, coorY) {
         switch (game.getField()[coorY][coorX]) {
             case CONSTANTS.get("BLANK_SPACE"):
