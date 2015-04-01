@@ -14,16 +14,17 @@ var Ship = function(sizX, sizY, posX, posY ){
         this.getStatus=function(matriz){
             for (var i = 0; i < this.sizeX; i++) {
                 for (var j = 0; j < this.sizeY; j++) {
-                    if (matriz[this.positionY + j][this.positionX + i] == 'H') {
+                    if (matriz[this.positionY + j][this.positionX + i] == CONSTANTS.get("SHOOT_HIT")) {
                         this.damage++;
                     }
                 }
-                }
-                if(this.sizeX*this.sizeY >= this.damage) {
-                    return _status= CONSTANTS.get("SHIP_LIVE");
-                }
-                return _status= CONSTANTS.get("SHIP_DIE");
+            }
+            if(this.sizeX*this.sizeY >= this.damage) {
+                return _status= CONSTANTS.get("SHIP_LIVE");
+            }
+            return _status= CONSTANTS.get("SHIP_DIE");
         };
+
 };
 
 

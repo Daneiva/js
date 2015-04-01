@@ -8,6 +8,7 @@
 var Player=function(nam){
     //Name of Player
     this.name=nam;
+
     var game = new Field();
     game.putShips();
     game.showTable();
@@ -40,7 +41,6 @@ var Player=function(nam){
                 break;
             default :
                 break
-
         }
     };
 
