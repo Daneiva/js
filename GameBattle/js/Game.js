@@ -3,9 +3,11 @@
  */
 var Game = function (numPlayers) {
 
+    //MIN_PLAYERS:1, MAX_PLAYERS=2
+
     if( numPlayers<0 || numPlayers>2 ){
         console.error("The number of players is 2 maximum");
-
+        return;
     }
     var _fields;
     var _players;
@@ -31,7 +33,7 @@ var Game = function (numPlayers) {
 
     };
 
-    this.end = function () {
+    var end = function () {
 
         for(var i=0; i < players.length; i++){
             _players[i].statusPlayer();
