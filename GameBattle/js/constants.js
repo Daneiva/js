@@ -19,7 +19,7 @@ var CONSTANTS = (function(){
         //Ship Live
         SHIP_LIVE:"Live",
         //Ship Die
-        SHIP_DIE:"DIE"
+        SHIP_DIE:"Die"
 
     };
     return {
