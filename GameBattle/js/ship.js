@@ -13,11 +13,13 @@ var Ship = function(sizX, sizY, posX, posY ){
     this.positionY=posY;
     this.sizeX=sizX;
     this.sizeY=sizY;
+
     /**
      * Damage of a Ship in the game
      * @type {int}
      */
     this.damage=0;
+
     /**
      * Damage of a Ship in the game
      * @type {Constants}

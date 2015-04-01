@@ -69,6 +69,7 @@ var Field= function() {
             }
         }
     };
+
     /**
      * Function that generate a random size and position of the ships in the field.
      * @return {Array<int>}

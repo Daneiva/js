@@ -3,6 +3,7 @@
  * Class Constants define the constants variables that will be use in the game.
  */
 var CONSTANTS = (function(){
+
     var _constants = {
        /**
         * Board Size

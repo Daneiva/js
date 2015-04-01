@@ -14,6 +14,7 @@ var Player=function(nam){
     var game = new Field();
     game.putShips();
     game.showTable();
+
     /**
      * SetShoot method to shoot to the ships
      * @param {int} coorX
