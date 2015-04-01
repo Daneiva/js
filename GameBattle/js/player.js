@@ -32,7 +32,7 @@ var Player=function(nam){
                 game.getField()[coorY][coorX] =CONSTANTS.get("SHOOT_HIT");
                 game.showTable();
                 for(var i=0; i< game.getShips().length ; i++){
-                    console.log("Ship "+i+ ": "+ game.getShips()[i].getStatus(game.getField()));
+                    console.log("Ship "+i+ ": "+ game.getShips()[i].updateStatus(game.getField()));
                 }
                 break;
             case CONSTANTS.get("SHOOT_FAILED") :
