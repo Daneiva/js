@@ -9,13 +9,13 @@ var CONSTANTS = (function(){
         * Board Size
         * @type {int}
         */
-        BOARD_SIZE: 7,
+        BOARD_SIZE: 10,
 
         /**
         *Ships to Create
         * @type {int}
         */
-        TOTAL_SHIPS: 4,
+        TOTAL_SHIPS: 5,
 
         /**
          * Max Size of Ship
@@ -57,11 +57,44 @@ var CONSTANTS = (function(){
          * Ship Die
          * @type {char}
          */
-        SHIP_DIE:"Die"
+        SHIP_DIE:"Die",
 
+        /**
+         * The maximum size of the field
+         * @type {int}
+         */
+        MAX_BOARD_SIZE: 20,
+
+        /**
+         * The minimum size of the field
+         * @type {int}
+         */
+        MIN_BOARD_SIZE: 3,
+
+        /**
+         * The maximum number of players
+         * @type {int}
+         */
+        MAX_PLAYERS: 2,
+
+        /**
+         * The minimum number of players
+         * @type {int}
+         */
+        MIN_PLAYERS: 1,
+
+        /**
+         * The minimum number of ships
+         * @type {int}
+         */
+        MIN_SHIPS: 1
     };
     return {
         get: function(key) {
+            return _constants[key];
+        },
+        set: function(key,value) {
+            _constants[key]=value;
             return _constants[key];
         }
     };
