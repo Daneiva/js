@@ -1,48 +1,60 @@
 /**
  * Created by Jimmy Maldonado, Rodrigo Zarate on 3/26/2015.
  */
-var Game = function (numPlayers,size,maxShips) {
-    //validation size board:  Min=3 and Max=20
-    if( size<3 || size>20 ){
-        console.error("The minimum size board  is 3, and the maximum 20");
+var Game = function (numPlayers,size,numShips) {
+    //validate size board:  Min=3 and Max=20
+    if( size < CONSTANTS.get("MIN_BOARD_SIZE") || size > CONSTANTS.get("MAX_BOARD_SIZE") ){
+        console.error("ERROR: The minimum size board  is"+ CONSTANTS.get("MIN_BOARD_SIZE") +", and the maximum "+CONSTANTS.get("MAX_BOARD_SIZE"));
         return;
     }
-    //Validation number of ship: Min=1 and Max = s+ma[n]
-    var calcMaxShip= (size+(size-3));
-    if( maxShips<1 || maxShips>calcMaxShip ){
-        console.error("for the board of: " +size+", you can create up " +maxShips+" ships");
+    //Validate number of ship: Min=1 and Max = s+ma[n]
+    var calcMaxShip= (size+(size-CONSTANTS.get("MAX_SIZE_SHIP")));
+    if( numShips < CONSTANTS.get("MIN_SHIPS") || numShips > calcMaxShip ){
+        console.error("ERROR: For the board of size: " +size+", you can create between "+CONSTANTS.get("MIN_SHIPS")+" and "+calcMaxShip+" ships");
         return;
     }
-    //MIN_PLAYERS:1, MAX_PLAYERS=2
-    /*if( numPlayers<0 || numPlayers>2 ){
-        console.error("The number of players is 2 maximum");
+
+    if( numPlayers < CONSTANTS.get("MIN_PLAYERS") || numPlayers > CONSTANTS.get("MAX_PLAYERS")){
+        console.error("ERROR: The number of players should be between: "+CONSTANTS.get("MIN_PLAYERS")+" and "+CONSTANTS.get("MAX_PLAYERS"));
         return;
-    }*/
-    var _fields;
-    var _players;
+    }
+
+    CONSTANTS.set("BOARD_SIZE",size);
+    CONSTANTS.set("TOTAL_SHIPS",numShips);
+    var _players = new Array();
+
+    var _turns = CONSTANTS.get("TOTAL_SHIPS") * CONSTANTS.get("MAX_SIZE_SHIP");
+
 
     this.start = function(){
-        var _createdPlayers = 0;
-        _players= new Array();
-        //_fields = new Array();
+        for(var i = 1; i <= numPlayers ; i++){
+            _players.push(new Player("Player "+i));
+        }
+        play();
+    };
 
-        /*Test variables*/
-        var _player1 = new Player("Player 1");
-        var _player2 = new Player("Player 2");
-
-        var _fieldPlayer1 = new Field();
-        var _fieldPlayer2 = new Field();
-        /*Fin test variables*/
-
-        /*_fieldPlayer1.putShips();
-        _fieldPlayer1.showTable();
-        _fieldPlayer2.putShips();
-        _fieldPlayer2.showTable();*/
-
+    var play = function () {
+        var _win=false;
+        var _turnsPlayed = 0;
+        while(!_win && _turnsPlayed < _turns){
+            for(var i = 1; i <= numPlayers ; i++){
+                console.log("Player "+(i)+" shoot!!!");
+                _players[i-1].setShoot(5,7);
+                if(!_players[i-1].shipsAreAlive()){
+                    _win = true;
+                    break;
+                }
+            }
+            _turnsPlayed++;
+        }
+        if(_win){
+             //show the winner
+        }else{
+          //
+        }
     };
 
     var end = function () {
-
         for(var i=0; i < players.length; i++){
             _players[i].statusPlayer();
         }

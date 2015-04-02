@@ -7,8 +7,8 @@ var Player=function(nam){
      * @type {string}
      */
     this.name=nam;
-
     var _field = new Field();
+
     _field.putShips();
     _field.showTable();
 
@@ -64,6 +64,22 @@ var Player=function(nam){
             console.log("Ship "+i+ ": "+ _field.getShips()[i].updateStatus(_field.getField()));
         }
     };
+
+
+    this.shipsAreAlive = function () {
+        var _shipsDie = 0;
+        for(var i = 0; i < _field.getShips().length ; i++){
+            if(_field.getShips()[i].getStatus() == CONSTANTS.get("SHIP_DIE")){
+                _shipsDie++;
+            }
+        }
+        if(_shipsDie == _field.getShips().length){
+            return false;
+        }else{
+            return true;
+        }
+    };
+
 };
 
 
