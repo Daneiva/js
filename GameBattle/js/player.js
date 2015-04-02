@@ -1,6 +1,3 @@
-/*
- * Created by Daneiva Gamboa - Alejandra Arteaga
- */
 /**
  * Class Player initialize a player and the game.
  */
@@ -11,43 +8,62 @@ var Player=function(nam){
      */
     this.name=nam;
 
-    var game = new Field();
-    game.putShips();
-    game.showTable();
+    var _field = new Field();
+    _field.putShips();
+    _field.showTable();
 
     /**
-     * SetShoot method to shoot to the ships
+     * setShoot method to shoot to the ships
      * @param {int} coorX
      * @param {int} coorY
      */
     this.setShoot = function (coorX, coorY) {
-        switch (game.getField()[coorY][coorX]) {
+        switch (_field.getField()[coorY][coorX]) {
+            /**
+             * The case if the shot fail
+             */
             case CONSTANTS.get("BLANK_SPACE"):
-                console.log("Fail");
-                game.getField()[coorY][coorX] =CONSTANTS.get("SHOOT_FAILED");
-                game.showTable();
+                console.log(nam+" Fail! :( ");
+                _field.getField()[coorY][coorX] =CONSTANTS.get("SHOOT_FAILED");
+                _field.showTable();
                 break;
+            /**
+             * The case if the shot hit the ship
+             */
             case CONSTANTS.get("BUSY_SPACE"):
-                console.log("Hit");
-                game.getField()[coorY][coorX] =CONSTANTS.get("SHOOT_HIT");
-                game.showTable();
-                for(var i=0; i< game.getShips().length ; i++){
-                    console.log("Ship "+i+ ": "+ game.getShips()[i].updateStatus(game.getField()));
-                }
+                console.log(nam+" Hit! :)");
+                _field.getField()[coorY][coorX] =CONSTANTS.get("SHOOT_HIT");
+                _field.showTable();
+                console.log("States of the ships: ");
+                this.updateStatusShips();
                 break;
+            /**
+             * The case if the shot already  was done
+             */
             case CONSTANTS.get("SHOOT_FAILED") :
-            console.log("Try again");
-            game.showTable();
+            console.log(nam+ ",Sorry you already did that shot\n Try again in the next turn");
+                _field.showTable();
             break;
+            /**
+             * The case if the shot already  was done
+             */
             case CONSTANTS.get("SHOOT_HIT") :
-                console.log("Try again");
-                game.showTable();
+                console.log(nam+ ",Sorry you already did that shot\n Try again in the next turn");
+                _field.showTable();
                 break;
             default :
                 break
         }
     };
-
+    /**
+     * updateStatusShips method to update the state of the ships of the player
+     * and to show the state of the ships in the console
+     */
+    this.updateStatusShips= function(){
+        for(var i=0; i< _field.getShips().length ; i++){
+            console.log("Ship "+i+ ": "+ _field.getShips()[i].updateStatus(_field.getField()));
+        }
+    };
 };
 
 
