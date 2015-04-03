@@ -60,7 +60,21 @@ var Game = function (numPlayers,size,numShips) {
         }
     };
 
-    this.shot= function (posX,posY,pName){
+    this.shot= function (posX,posY){
+        this.positionX= posX;
+        this.positionY=posY;
 
+        if (posX>=0 || posX<=CONSTANTS.get("BOARD_SIZE")){
+            if ((posY) >=0 || posY<=CONSTANTS.get("BOARD_SIZE")){
+///////
+//////
+            }
+            else{
+                console.error("Invalid shot!!!");
+            }
+        }
+        else{
+            console.error("Invalid shot!!!");
+        }
     }
 };
