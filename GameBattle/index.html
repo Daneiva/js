@@ -8,8 +8,59 @@
     <script src="js/ship.js"></script>
     <script src="js/player.js"></script>
     <script src="js/Game.js"></script>
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <script>
+        window.onload = function () {
+            var _button = document.getElementById("start");
+            _button.addEventListener("click",initGame)
+        };
+        var initGame = function () {
+            var _form = document.forms["form"];
+            var _players = _form.elements["players"].value;
+            var _size = _form.elements["size"].value;
+            var _ships = _form.elements["ships"].value;
+
+            /*Initialize the game*/
+            var _game = new Game(_players,_size,_ships);
+            _game.start();
+        }
+    </script>
 </head>
 <body>
-
+<div id="container">
+    <div id="header">
+        <h1 class="center">Game: Battleship</h1>
+        <h3 class="center">JavaScript</h3>
+    </div>
+    <div id="game">
+        <div id = "main">
+            <h3>Enter the following data:</h3>
+            <form name="form" id="form">
+                <div>
+                    <label for="p1">Number of players: </label>
+                    <input type="radio" value="1" name="players" id="p1" checked/> 1 Player
+                    <input type="radio" value="2" name="players" id="p2"/> 2 Players
+                </div>
+                <div>
+                    <label for="size">Size of the Field: </label>
+                    <input type="number" id="size" size="35" value="3" placeholder="Size">
+                </div>
+                <div>
+                    <label for="ships">Number of Ships: </label>
+                    <input type="number" id="ships" size="35" value="1" placeholder="Ships">
+                </div>
+                <div>
+                    <input type="button" id="start" value="Start game">
+                </div>
+            </form>
+            <small>(*) To see the game activity open the browser's console</small>
+        </div>
+    </div>
+    <div id="footer">
+        <h4 class="center">
+            <label>Alejandra Arteaga - Daneiva Gamboa - Jimmy Maldonado - Rodrigo Zarate</label>
+        </h4>
+    </div>
+</div>
 </body>
 </html>

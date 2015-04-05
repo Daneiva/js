@@ -31,16 +31,18 @@ var Ship = function(sizX, sizY, posX, posY ){
      */
     this.updateStatus=function(actualMatrix){
         this.calculateDamage(actualMatrix);
-        if(this.sizeX*this.sizeY >=this.damage ) {
-            return _status= CONSTANTS.get("SHIP_LIVE");
+        if(this.sizeX*this.sizeY > this.damage ) {
+            _status= CONSTANTS.get("SHIP_LIVE");
+        }else{
+            _status = CONSTANTS.get("SHIP_DIE");
         }
-        return _status = CONSTANTS.get("SHIP_DIE");
+        return _status;
     };
     /**
      * Function that calculate the Damage of a Ship in the game.
      */
     this.calculateDamage= function (actualMatrix) {
-        var damageActual= 0;
+        this.damage= 0;
         for (var i = 0; i < this.sizeX; i++) {
             for (var j = 0; j < this.sizeY; j++) {
                 if (actualMatrix[this.positionY + j][this.positionX + i] == CONSTANTS.get("SHOOT_HIT")) {
@@ -50,6 +52,10 @@ var Ship = function(sizX, sizY, posX, posY ){
         }
     };
 
+    /**
+     * Returns the state of the ship (LIVE or DIE)
+     * @return {Constants}
+     */
     this.getStatus = function(){
         return _status;
     };
