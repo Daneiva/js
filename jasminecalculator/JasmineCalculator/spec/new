@@ -1,0 +1,14 @@
+FEATURE|SOURCE CODE
+    Calculator
+        Add
+        Substract
+        Multiply
+        Divide
+
+BDD
+    Calculator
+        Should be able to Add two numbers
+        Should be able to Substract two numbers
+        Should be able to Multiply two numbers
+        Should be able to Divide two numbers
+
