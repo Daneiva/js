@@ -6,23 +6,23 @@ var Game = function (numPlayers,size,numShips) {
      * Validate the size of field:  Min=3 and Max=20
      */
     if( !isNaN(size)&& size < CONSTANTS.get("MIN_BOARD_SIZE") || size > CONSTANTS.get("MAX_BOARD_SIZE") ){
-        console.error("ERROR: The minimum size board  is "+ CONSTANTS.get("MIN_BOARD_SIZE") +", and the maximum "+CONSTANTS.get("MAX_BOARD_SIZE"));
-        return;
+        throw (console.error("ERROR: The minimum size board  is "+ CONSTANTS.get("MIN_BOARD_SIZE") +
+            ", and the maximum "+CONSTANTS.get("MAX_BOARD_SIZE")));
     }
     /**
      * Validate the number of ship: Min=1 and Max = s+ma[n]
      */
     var calcMaxShip= (size+(size-CONSTANTS.get("MAX_SIZE_SHIP")));
     if( !isNaN(numShips)&& numShips < CONSTANTS.get("MIN_SHIPS") || numShips > calcMaxShip ){
-        console.error("ERROR: For the board of size: " +size+", you can create between "+CONSTANTS.get("MIN_SHIPS")+" and "+calcMaxShip+" ships");
-        return;
+        throw (console.error("ERROR: For the board of size: " +size+", you can create between "+
+            CONSTANTS.get("MIN_SHIPS")+" and "+calcMaxShip+" ships"));
     }
     /**
      * Validate the number of players
      */
     if( !isNaN(numPlayers)&& numPlayers < CONSTANTS.get("MIN_PLAYERS") || numPlayers > CONSTANTS.get("MAX_PLAYERS")){
-        console.error("ERROR: The number of players should be between: "+CONSTANTS.get("MIN_PLAYERS")+" and "+CONSTANTS.get("MAX_PLAYERS"));
-        return;
+        throw (console.error("ERROR: The number of players should be between: "+CONSTANTS.get("MIN_PLAYERS")+
+            " and "+CONSTANTS.get("MAX_PLAYERS")));
     }
 
     /**
