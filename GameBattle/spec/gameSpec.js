@@ -1,7 +1,7 @@
 /**
  * Created by jimmymaldonado on 4/20/2015.
  */
-describe("Calculator", function () {
+describe("Game", function () {
     describe('Create Game',function(){
 
         /*Negative*/
@@ -33,24 +33,6 @@ describe("Calculator", function () {
             " and ( 2 * boardSize + "+ CONSTANTS.get("MAX_SIZE_SHIP") + ")", function () {
             var game = new Game(1,5,7);
             expect(game).toBeDefined();
-        });
-    });
-    describe('Validate shoot',function(){
-        var game;
-        beforeEach(function () {
-            game = new Game(1,3,3);
-        });
-        afterEach(function () {
-            game = null;
-        });
-        it("Should be not able to shoot outside the board", function () {
-            game.setShoot();
-        });
-
-        it("Should be able to evaluate two numbers", function () {
-            var actRes=calculator.add(1,2);
-            var expRes=3;
-            expect(actRes).toBe(expRes);
         });
     });
 });
