@@ -57,7 +57,7 @@ var Field= function() {
          */
         var _shipCreated=0;
         while(_shipCreated < CONSTANTS.get("TOTAL_SHIPS")){
-            var _sizeAndPosition = generateSizeAndPosition();
+            var _sizeAndPosition = this.generateSizeAndPosition();
             var _busy = verifyPosition(_sizeAndPosition[0],_sizeAndPosition[1],_sizeAndPosition[2],_sizeAndPosition[3]);
             if(!_busy) {
                 _ships.push(new Ship(_sizeAndPosition[0],_sizeAndPosition[1],_sizeAndPosition[2],_sizeAndPosition[3]));
@@ -74,7 +74,7 @@ var Field= function() {
      * Function that generate a random size and position of the ships in the field.
      * @return {Array<int>}
      */
-    var generateSizeAndPosition = function(){
+    this.generateSizeAndPosition = function(){
        /**
         * Array of random numbers that represent size and position in X and Y of a Ship.
         * @type {Array<int>}
