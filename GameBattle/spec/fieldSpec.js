@@ -59,8 +59,10 @@ describe('Field', function(){
         it('should be able to generate a ship in the position in Y less or equal to the field size',function(){
             var actRes = field.generateSizeAndPosition()[3];
             var expRes = CONSTANTS.get("BOARD_SIZE") + 1;
+
             console.log("actual Result: "+actRes);
             console.log("expected Result: "+expRes);
+
             expect(actRes).toBeLessThan(expRes);
         });
 
