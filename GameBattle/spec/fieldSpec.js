@@ -2,7 +2,7 @@
  * Created by RodrigoZarate on 4/20/2015.
  */
 describe('Field', function(){
-    describe('Field', function(){
+    describe('Test Cases to Field', function(){
         var field;
         beforeEach(function(){
             field = new Field();
@@ -31,20 +31,37 @@ describe('Field', function(){
             expect(actRes).toBe(expRes);
         });
 
-        it('should be able to generate a  ship size in X minor to the field size',function(){
+        it('should be able to generate a ship of size in X less or equal to the field size',function(){
             var actRes = field.generateSizeAndPosition()[0];
             var expRes = CONSTANTS.get("BOARD_SIZE") + 1;
             expect(actRes).toBeLessThan(expRes);
 
         });
 
-        it('should be able to generate a size in Y minor to the field size',function(){
+        it('should be able to generate a ship of size in Y less or equal to the field size',function(){
             var actRes = field.generateSizeAndPosition()[1];
             var expRes = CONSTANTS.get("BOARD_SIZE") + 1;
             console.log("actual Result: "+actRes);
             console.log("expected Result: "+expRes);
             expect(actRes).toBeLessThan(expRes);
 
+        });
+
+        it('should be able to generate a ship in the position in X less or equal to the field size',function(){
+            var actRes = field.generateSizeAndPosition()[2];
+            var expRes = CONSTANTS.get("BOARD_SIZE") + 1;
+            console.log("actual Result: "+actRes);
+            console.log("expected Result: "+expRes);
+            expect(actRes).toBeLessThan(expRes);
+
+        });
+
+        it('should be able to generate a ship in the position in Y less or equal to the field size',function(){
+            var actRes = field.generateSizeAndPosition()[3];
+            var expRes = CONSTANTS.get("BOARD_SIZE") + 1;
+            console.log("actual Result: "+actRes);
+            console.log("expected Result: "+expRes);
+            expect(actRes).toBeLessThan(expRes);
         });
 
     });
