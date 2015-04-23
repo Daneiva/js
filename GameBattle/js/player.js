@@ -63,7 +63,7 @@ var Player=function(nam){
              * The case if the shot already  was done
              */
             case CONSTANTS.get("SHOOT_FAILED") :
-                throw  (nam+ ",Sorry you already did that shot\n Try again in the next turn");
+                console.log(nam+ ",Sorry you already did that shot\n Try again in the next turn");
                 _numFails++;
                 _field.showTable();
             break;
@@ -71,7 +71,7 @@ var Player=function(nam){
              * The case if the shot already  was done
              */
             case CONSTANTS.get("SHOOT_HIT") :
-                throw (nam+ ",Sorry you already did that shot\n Try again in the next turn");
+                console.log(nam+ ",Sorry you already did that shot\n Try again in the next turn");
                 _numFails++;
                 _field.showTable();
                 break;
