@@ -47,6 +47,7 @@ var Player=function(nam){
                 _field.getField()[coorY][coorX] =CONSTANTS.get("SHOOT_FAILED");
                 _numFails++;
                 _field.showTable();
+                return CONSTANTS.get("SHOOT_FAILED");
                 break;
             /**
              * The case if the shot hit the ship
@@ -58,6 +59,7 @@ var Player=function(nam){
                 _field.showTable();
                 console.log("States of the ships: ");
                 this.updateStatusShips();
+                return CONSTANTS.get("SHOOT_HIT");
                 break;
             /**
              * The case if the shot already  was done
@@ -66,6 +68,7 @@ var Player=function(nam){
                 console.log(nam+ ",Sorry you already did that shot\n Try again in the next turn");
                 _numFails++;
                 _field.showTable();
+                return CONSTANTS.get("SHOOT_FAILED");
             break;
             /**
              * The case if the shot already  was done
@@ -74,6 +77,7 @@ var Player=function(nam){
                 console.log(nam+ ",Sorry you already did that shot\n Try again in the next turn");
                 _numFails++;
                 _field.showTable();
+                return CONSTANTS.get("SHOOT_HIT");
                 break;
             default :
                 break

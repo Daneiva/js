@@ -19,31 +19,31 @@ body{
     margin: 7px 3px;
     background-size: 50px 50px;
 }
-#player1{
+/*#player1{
     border: 1px solid;
     width: 49%;
     height: 200px;
     float: left;
     margin: 7px 3px;
-}
+}*/
 #game{
     border: 1px solid;
     width: 99%;
-    height: 200px;
     float: left;
     margin: 7px 3px;
 }
-#player2{
+/*#player2{
     border: 1px solid;
     width: 49%;
     height: 200px;
     float: left;
     margin: 7px 3px;
     background-size: 100px 150px;
-}
+}*/
 #main{
     margin: 5px 5%;
     background-size: 100px 150px;
+    height: 200px;
 }
 input,label{
     margin-top: 5px;
@@ -55,4 +55,30 @@ input,label{
     clear: both;
     height: 95px;
     margin: 5px 3px;
+}
+#field{
+    display: none;
+    /*float: left;*/
+    margin:30xp;
+}
+/*UI*/
+div.container{
+    margin:30xp;
+    border: 1px solid black;
+}
+div.cell {
+    border: 2px solid black;
+    /* background: #fc0; */
+    height: 30px;
+    width: 30px;
+    float: left;
+    margin: 2px;
+    display: inline-block;
+    cursor: pointer;
+}
+div.hit{
+    background: green;
+}
+div.kill{
+    background: black !important;
 }

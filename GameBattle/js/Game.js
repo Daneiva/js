@@ -46,14 +46,14 @@ var Game = function (numPlayers,size,numShips) {
     /**
      * Start the game.
      */
-    this.start = function(){
+    this.startGame = function(){
         for(var i = 1; i <= numPlayers ; i++){
             console.log("--------------------------------------------");
             _players.push(new Player("Player "+i));
             console.log("Player "+i+", destroy the following ships: ");
             _players[i-1].showField();
         }
-        play();
+        //play();
     };
 
     /**
@@ -67,9 +67,9 @@ var Game = function (numPlayers,size,numShips) {
                 console.log("--------------------------------------------");
                 console.log("Player "+(i)+" shoot!!!");
                 alert("Player "+(i)+" shoot!!!");
-                var _x = getShootCoordinateX();
-                var _y = getShootCoordinateY();
-                _players[i-1].setShoot(_x,_y);
+                //var _x = getShootCoordinateX();
+                //var _y = getShootCoordinateY();
+
                 if(_players[i-1].shipsAreAlive() == CONSTANTS.get("TOTAL_SHIPS")){
                     _win = true;
                     alert("Player "+(i)+" wins!!!");
@@ -91,6 +91,11 @@ var Game = function (numPlayers,size,numShips) {
             _players[i].statusPlayer();
         }
         console.log("--------------------------------------------");
+    };
+
+
+    this.getPlayers = function () {
+        return _players;
     };
 
     /**

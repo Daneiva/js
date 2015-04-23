@@ -63,7 +63,7 @@ var CONSTANTS = (function(){
          * The maximum size of the field
          * @type {int}
          */
-        MAX_BOARD_SIZE: 20,
+        MAX_BOARD_SIZE: 10,
 
         /**
          * The minimum size of the field
