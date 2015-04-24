@@ -35,6 +35,7 @@ var Ship = function(sizX, sizY, posX, posY ){
             _status= CONSTANTS.get("SHIP_LIVE");
         }else{
             _status = CONSTANTS.get("SHIP_DIE");
+            alert("Ship die ... Good job");
         }
         return _status;
     };
@@ -60,5 +61,3 @@ var Ship = function(sizX, sizY, posX, posY ){
         return _status;
     };
 };
-
-
