@@ -10,22 +10,30 @@ var UiGame = function (numPlayers,size,numShips)
 
     var drawFields= function()
     {
-        $("#field").fadeIn();
         for(var k = 0; k < _game.getPlayers().length; k++ ) {
             var _matrixPlayer = _game.getPlayers()[k].getBoard().getField();
             var cellSize = 38;
             var containerSize = cellSize * CONSTANTS.get("BOARD_SIZE");
+            $("#player"+k).css('width',containerSize);
+            $("#player"+k).append(_game.getPlayers()[k].name);
             var container = $('<div class="container '+k+'" style="width:' + containerSize
                 + 'px;height:' + containerSize + 'px"></div>');
             for (var i = 0; i < CONSTANTS.get("BOARD_SIZE"); i++) {
                 for (var j = 0; j < CONSTANTS.get("BOARD_SIZE"); j++) {
-                    container.append('<div class="cell ' + j + '' + i + '">' + _matrixPlayer[i][j] + '</div>');
+                    var cell = $('<div class="cell ' + j + '' + i + '"></div>');
+                    cell.on('mouseover',mouseoverBg);
+                    cell.on('mouseout',mouseoutBg);
+                    cell.on('mouseover',mouseoverBorder);
+                    cell.on('mouseout',mouseoutBorder);
+                    cell.on('click',addClickEventHandler);
+                    container.append(cell);
                 }
             }
+
             $("#field").append(container);
-            addHandles();
         }
     };
+
 
     var prevBg;
     var mouseoverBg= function(e){
