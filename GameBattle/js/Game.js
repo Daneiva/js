@@ -41,7 +41,12 @@ var Game = function (numPlayers,size,numShips) {
      * Number of turns
      * @type {int}
      */
-    var _turns = CONSTANTS.get("TOTAL_SHIPS") * CONSTANTS.get("MAX_SIZE_SHIP");
+    var _turns = numPlayers == 1 ? CONSTANTS.get("TOTAL_SHIPS") * CONSTANTS.get("MAX_SIZE_SHIP") :
+        CONSTANTS.get("TOTAL_SHIPS") * CONSTANTS.get("MAX_SIZE_SHIP") * 2;
+
+    var _win=false;
+
+    var _turnsPlayed = 0;
 
     /**
      * Start the game.
@@ -59,26 +64,21 @@ var Game = function (numPlayers,size,numShips) {
     /**
      * Controls the players' turns.
      */
-    var play = function () {
-        var _win=false;
-        var _turnsPlayed = 0;
-        while(!_win && _turnsPlayed < _turns){
-            for(var i = 1; i <= numPlayers ; i++){
-                console.log("--------------------------------------------");
-                console.log("Player "+(i)+" shoot!!!");
-                alert("Player "+(i)+" shoot!!!");
-                //var _x = getShootCoordinateX();
-                //var _y = getShootCoordinateY();
-
-                if(_players[i-1].shipsAreAlive() == CONSTANTS.get("TOTAL_SHIPS")){
-                    _win = true;
-                    alert("Player "+(i)+" wins!!!");
-                    break;
-                }
+    this.updatePoints = function (id) {
+        console.log("--------------------------------------------");
+        console.log("Player "+(id)+" shoot!!!");
+        _turnsPlayed++;
+        if(_turnsPlayed < _turns){
+            if(_players[id].shipsAreAlive() == CONSTANTS.get("TOTAL_SHIPS")){
+                alert("Player "+(id)+" wins!!!");
+                end();
+                return true;
             }
-            _turnsPlayed++;
         }
-        end();
+        else{
+            end();
+            return false;
+        }
     };
 
     /**
@@ -86,11 +86,16 @@ var Game = function (numPlayers,size,numShips) {
      */
     var end = function () {
         alert("The game finished!!!");
+        var results = $('<div class = "results"></div>')
         for(var i = 0; i < _players.length; i++) {
+            results.append("--------------------------------------------<br>")
             console.log("--------------------------------------------");
-            _players[i].statusPlayer();
+            results.append(_players[i].statusPlayer());
+            $('.container.'+i).fadeIn();
         }
         console.log("--------------------------------------------");
+        results.append("--------------------------------------------<br>");
+        $("#field").append(results);
     };
 
 
