@@ -119,15 +119,23 @@ var Player=function(nam){
      */
     this.statusPlayer = function () {
         var _numShipsDied = this.shipsAreAlive();
+        var status = "";
         console.log(this.name+": ");
+        status=status+this.name+": <br>";
         if(_numShipsDied == CONSTANTS.get("TOTAL_SHIPS")){
+            status=status+"You are the winner !!!<br>";
             console.log("You are the winner !!!");
         }else{
             console.log("You lose :(");
+            status=status+"You lose :(<br>";
         }
+        status=status+"Failed: "+_numFails+"<br>";
         console.log("Failed: "+_numFails);
+        status=status+"Hit : "+_numHits+"<br>";
         console.log("Hit : "+_numHits);
+        status=status+"Ships killed: "+_numShipsDied+"<br>";
         console.log("Ships killed: "+_numShipsDied);
+        return status;
     };
 
     this.getBoard = function () {
