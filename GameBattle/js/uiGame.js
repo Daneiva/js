@@ -4,6 +4,7 @@ var UiGame = function (numPlayers,size,numShips)
     this.start = function () {
         _game.startGame();
         drawFields();
+        $("#field").fadeIn();
 
     };
 
@@ -25,6 +26,7 @@ var UiGame = function (numPlayers,size,numShips)
             addHandles();
         }
     };
+
     var prevBg;
     var mouseoverBg= function(e){
         prevBg=$(e.target).css('background');
@@ -41,43 +43,36 @@ var UiGame = function (numPlayers,size,numShips)
     var mouseoutBorder= function(e){
         $(e.target).css('border-color',prevBorder);
     };
-    var addMouseoverEventHandler= function (el) {
-        el.on('mouseover',mouseoverBg );
-    };
-    var addMouseoutEventHandler= function (el) {
-        el.on('mouseout',mouseoutBg );
-    };
-    var addMouseoverBorderEventHandler= function (el) {
-        el.on('mouseover',mouseoverBorder );
-    };
-    var addMouseoutBorderEventHandler= function (el) {
-        el.on('mouseout',mouseoutBorder );
-    };
-    var addClickEventHandler= function (el) {
-        //click
-        el.on('click', function(e){
-            $(e.target).off('mouseout',mouseoutBg);
-            $(e.target).off('mouseover',mouseoverBg);
-            var cellPositionX = $(e.target).attr('class').split(" ")[1].split('')[0];
-            var cellPositionY = $(e.target).attr('class').split(" ")[1].split('')[1];
-            var res = _game.getPlayers()[0].setShoot(parseInt(cellPositionX),parseInt(cellPositionY));
-            if (res == CONSTANTS.get("SHOOT_FAILED")){
-                $(e.target).css('background','red');
+    var addClickEventHandler= function(e){
+        var idPlayer = $(e.target).parent().attr('class').split(" ")[1];
+        $(e.target).off('mouseout',mouseoutBg);
+        $(e.target).off('mouseover',mouseoverBg);
+        var cellPositionX = $(e.target).attr('class').split(" ")[1].split('')[0];
+        var cellPositionY = $(e.target).attr('class').split(" ")[1].split('')[1];
+        var res = _game.getPlayers()[parseInt(idPlayer)].setShoot(parseInt(cellPositionX),parseInt(cellPositionY));
+        if (res == CONSTANTS.get("SHOOT_FAILED")){
+            $(e.target).css('background','red');
+        }
+        else{
+            $(e.target).css('background','green');
+        }
+        $(e.target).text(res);
+
+        if(_game.getPlayers().length > 1){
+            $(".container."+idPlayer).fadeOut();
+            $("#player"+idPlayer).fadeOut();
+
+            if(idPlayer == "0"){
+                $(".container."+"1").fadeIn();
+                $("#player1").fadeIn();
+            }else{
+                $(".container."+"0").fadeIn();
+                $("#player0").fadeIn();
             }
-            else{
-                $(e.target).css('background','green');
-            }
-            $(e.target).text(res);
+        }
+        _game.updatePoints(parseInt(idPlayer));
+        $("#player0").fadeOut();
+        $("#player1").fadeOut();
 
-});
-};
-
-var addHandles = function(){
-    addMouseoverEventHandler($('div.cell'));
-    addMouseoutEventHandler($('div.cell'));
-
-    addClickEventHandler($('div.cell'));
-    addMouseoverBorderEventHandler($('div.cell'));
-    addMouseoutBorderEventHandler($('div.cell'));
-};
+    };
 };
